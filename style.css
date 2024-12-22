@@ -1,0 +1,97 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f8f0f5; /* Soft pink background */
+}
+
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+}
+
+.main-text {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #c6869b; 
+}
+
+.main-text.visible {
+  opacity: 1;
+}
+
+.image-container {
+  width: 100%; 
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e6c9d0;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 1s ease-in-out; 
+  position: absolute; 
+  top: 0;
+  left: 0; 
+}
+
+.image-container img.active {
+  opacity: 1;
+}
+
+.image-container img:not(.active) {
+  opacity: 0;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #c6869b;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.right-arrow {
+  right: 10px;
+}
+.continue-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #c6869b; /* Soft pink button */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none; 
+  opacity: 0; 
+  transition: opacity 0.5s ease-in-out; /* Add a fade-in effect for the button */
+}
+
+.continue-button.visible {
+  opacity: 1; 
+}
+@media screen and (max-width: 600px) { 
+  .main-text {
+    font-size: 1.5rem; 
+  }
+}
