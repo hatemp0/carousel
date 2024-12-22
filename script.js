@@ -9,6 +9,7 @@ const imageTexts = ["This one is very iconic! I dare say our first photo togethe
 , "What do i say? I mean look at it! We're so cute and fun!"]
 const images = document.querySelectorAll('.image-container img');
 const rightArrow = document.querySelector('.right-arrow');
+const continueButton = document.querySelector('.continue-button')
 
 const h1 = document.querySelector(".main-text");
 h1.classList.add("visible");
@@ -46,14 +47,12 @@ function nextImage() {
   showImage(currentImageIndex);
 }
 
-function prevImage() {
-  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length; 
-  showImage(currentImageIndex);
+function startAutoplay() {
+  autoplayInterval = setTimeout(nextImage, imageDuration); 
 }
 
 rightArrow.addEventListener('click', nextImage);
 
-// Initial text changes (as before)
 setTimeout(() => {
   changeText("Hope you're having a lovely day so far!!");
 }, timeBetweenText);
@@ -70,5 +69,6 @@ setTimeout(() => {
   changeText("First wanted to share some of my favourite photos of us"); 
   document.querySelector('.image-container').style.display = 'block'; 
   showImage(0); 
+  document.querySelector('.continue-button').classList.add('visibleBtn');
   startAutoplay(); 
 }, 5 * timeBetweenText);

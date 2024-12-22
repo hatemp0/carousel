@@ -5,7 +5,7 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: sans-serif;
-  background-color: #f8f0f5; /* Soft pink background */
+  background-color: #f8f0f5; 
 }
 
 .container {
@@ -73,21 +73,21 @@ img {
 }
 .continue-button {
   position: absolute;
-  bottom: 20px;
+  bottom: -90px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #c6869b; /* Soft pink button */
+  background-color: #c6869b;
   color: white;
-  padding: 10px 20px;
+  padding: 20px 40px;
+  font-size: 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: none; 
   opacity: 0; 
-  transition: opacity 0.5s ease-in-out; /* Add a fade-in effect for the button */
+  transition: opacity 0.5s ease-in-out;
 }
 
-.continue-button.visible {
+.continue-button.visibleBtn {
   opacity: 1; 
 }
 @media screen and (max-width: 600px) { 
