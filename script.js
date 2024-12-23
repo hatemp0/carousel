@@ -1,5 +1,5 @@
 const timeBetweenText = 3000;
-const imageDuration = 5000; 
+const imageDuration = 6300; 
 let currentImageIndex = 0;
 let autoplayInterval;
 const imageTexts = ["This one is very iconic! I dare say our first photo together. Still remember it vividly, it was a very sweet moment, it was cold and was very unsure how to act but was very happy to be there :)"
@@ -214,6 +214,6 @@ setTimeout(() => {
     showImage(0); 
     document.querySelector('.continue-button').classList.add('visibleBtn');
     startAutoplay(); 
-  }, 1200);
+  }, 1500);
   
 }, 5 * timeBetweenText);

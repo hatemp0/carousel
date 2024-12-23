@@ -59,28 +59,23 @@ function createGifDisplay(gifLinks) {
     return container; 
   }
 
-  for (let i = 0; i < 4; i++) {
+  gifLinks.forEach((link, index) => {
     const gifWrapper = document.createElement('div');
     gifWrapper.classList.add('gif-wrapper');
 
     const gif = document.createElement('img');
     gif.classList.add('gif');
-    gif.alt = `GIF ${i + 1}`;
-
-    if (gifLinks[i]) {
-      gif.src = gifLinks[i];
-      gif.onerror = () => {
-        console.error(`Error loading GIF: ${gifLinks[i]}`);
-        gif.src = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
-      };
-    } else {
-      console.warn(`No GIF link provided for GIF ${i + 1}. Using placeholder.`);
-        gif.src = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
-    }
+    gif.alt = `GIF ${index + 1}`;
+    gif.src = link;
+    
+    gif.onerror = () => {
+      console.error(`Error loading GIF: ${link}`);
+      gif.src = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+    };
 
     gifWrapper.appendChild(gif);
     container.appendChild(gifWrapper);
-  }
+  });
 
   document.body.appendChild(container);
   return container;
@@ -91,7 +86,10 @@ const myGifLinks = [
   "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnltNTlnMDR3dXdoYWxmeGg2YnYyazFnY2Q3YmF1Z3oyOHU3czh3OCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/c76IJLufpNwSULPk77/giphy.gif",
   "https://media.giphy.com/media/W3OIS9xGcRReboyErW/giphy.gif?cid=790b7611nym59g04wuwhalfxh6bv2k1gcd7baugz28u7s8w8&ep=v1_gifs_search&rid=giphy.gif&ct=g",
   "https://media.giphy.com/media/RB46T9ysjzDEs/giphy.gif?cid=ecf05e47ytcbdx6aagksi3cjom00fpfpkhqmusdrcmongrap&ep=v1_gifs_search&rid=giphy.gif&ct=g",
-  "https://media.giphy.com/media/l41JWw65TcBGjPpRK/giphy.gif?cid=ecf05e47ytcbdx6aagksi3cjom00fpfpkhqmusdrcmongrap&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+  "https://media.giphy.com/media/l41JWw65TcBGjPpRK/giphy.gif?cid=ecf05e47ytcbdx6aagksi3cjom00fpfpkhqmusdrcmongrap&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+  "https://media.giphy.com/media/iGqP4DYXe4zVJbCY5N/giphy.gif?cid=ecf05e47q331i69iw5p1roevm8z7x9nvs26mfj9ny7xyh6em&ep=v1_gifs_search&rid=giphy.gif&ct=g", 
+  "https://media.giphy.com/media/UhA22WroDDm43O1nu1/giphy.gif?cid=ecf05e47cb30t4fstlndft2dj17ltdotc09ikf8s2ck0gv8j&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+  "https://media.giphy.com/media/fLy7yCDPAu4dE2OxO7/giphy.gif?cid=ecf05e47fan7xyxxanvy38xkmsthnnc9r4ojk7yytlwm6sks&ep=v1_gifs_search&rid=giphy.gif&ct=g"
 ];
 
 const gifDisplay = createGifDisplay(myGifLinks);
