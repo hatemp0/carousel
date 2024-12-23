@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>GIFs</title>
+<style>
+body {
+  background-color: #f8f0f5; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.gif-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.gif-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  height: 0;
+}
+
+.gif {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+  animation: fadeIn 2s ease-out;
+  opacity: 0; 
+  animation-fill-mode: forwards;
+}
+</style>
+</head>
+<body>
+
+<script>
+function createGifDisplay(gifLinks) {
+  const container = document.createElement('div');
+  container.classList.add('gif-container');
+
+  if (!gifLinks || gifLinks.length === 0) {
+    console.warn("No GIF links provided. Creating empty GIF display.");
+    return container; 
+  }
+
+  for (let i = 0; i < 4; i++) {
+    const gifWrapper = document.createElement('div');
+    gifWrapper.classList.add('gif-wrapper');
+
+    const gif = document.createElement('img');
+    gif.classList.add('gif');
+    gif.alt = `GIF ${i + 1}`;
+
+    if (gifLinks[i]) {
+      gif.src = gifLinks[i];
+      gif.onerror = () => {
+        console.error(`Error loading GIF: ${gifLinks[i]}`);
+        gif.src = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+      };
+    } else {
+      console.warn(`No GIF link provided for GIF ${i + 1}. Using placeholder.`);
+        gif.src = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg";
+    }
+
+    gifWrapper.appendChild(gif);
+    container.appendChild(gifWrapper);
+  }
+
+  document.body.appendChild(container);
+  return container;
+}
+
+
+const myGifLinks = [
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnltNTlnMDR3dXdoYWxmeGg2YnYyazFnY2Q3YmF1Z3oyOHU3czh3OCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/c76IJLufpNwSULPk77/giphy.gif",
+  "https://media.giphy.com/media/W3OIS9xGcRReboyErW/giphy.gif?cid=790b7611nym59g04wuwhalfxh6bv2k1gcd7baugz28u7s8w8&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+  "https://media.giphy.com/media/RB46T9ysjzDEs/giphy.gif?cid=ecf05e47ytcbdx6aagksi3cjom00fpfpkhqmusdrcmongrap&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+  "https://media.giphy.com/media/l41JWw65TcBGjPpRK/giphy.gif?cid=ecf05e47ytcbdx6aagksi3cjom00fpfpkhqmusdrcmongrap&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+];
+
+const gifDisplay = createGifDisplay(myGifLinks);
+
+</script>
+
+</body>
+</html>
+
